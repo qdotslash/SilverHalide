@@ -59,7 +59,6 @@ def get_dirs(scan_dir="/"):
     # scan dir for files and subdirs
     dir_list = app_utils.sub_dirs(root_dir=p)
 
-
     return(dir_list)
 
 @app.route('/get_value')

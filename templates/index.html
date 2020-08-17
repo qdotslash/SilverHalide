@@ -9,18 +9,60 @@
     <link href="{{url_for('static', filename='css/bootstrap-lightbox.min.css')}}" rel="stylesheet" type="stylesheet"/>    
     <link href="{{ url_for('static', filename='css/minimalist.css') }}" rel="stylesheet" type="text/css" /> 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <script type="text/javascript">
+        function on_sub(home_id, td_sel_id, sub_id){
+            alert('home_id.id: ' + home_id + '\ntd_sel_id.id: ' + td_sel_id + '\nsub_id text: ' + sub_id)
+        }
+    </script>
+
     <script type="text/javascript">
         function on_sel_id(home_id, td_sel_id, sel_id) {
+            var td_sel = document.getElementById(td_sel_id)
             var sel_el = document.getElementById(sel_id)
+            var home_el = document.getElementById(home_id);
             var sel_value = sel_el.options[sel_el.selectedIndex].value;
             var sel_text = sel_el.options[sel_el.selectedIndex].text;
             if(sel_value!=0){
-                var repl_div = document.createElement('div');
-                repl_div.innerText = sel_text;
-                repl_div.id = sel_id;
-                document.getElementById( td_sel_id ).replaceChild(repl_div, document.getElementById ( sel_id ))
-                var home = document.getElementById(home_id);
-                home.innerText = "+";
+                var repl_a = document.createElement('a');
+                repl_a.innerText = sel_text + ' / ';
+                repl_a.href = '#'
+                repl_a.id = sel_id;
+                repl_a.setAttribute("onclick", 'on_sub(home_id="'+repl_a.id+'", td_sel_id="'+td_sel.id+'", sub_id="'+sel_el.id+'")');
+                td_sel.replaceChild(repl_a, sel_el)
+                var repl_a = document.createElement('a');
+                repl_a.innerText = "+  ";
+                repl_a.href = '/'
+                alert(home_el.id)
+                repl_a.id = home_el.id;
+                td_sel.replaceChild(repl_a, home_el)
+                $.ajax({
+                    url: sel_text + "/",
+                    type: "get",
+                    success: function(response) {
+                        var select11 = document.createElement('select');
+                        var sel11_id = sel_id + '1'
+                        select11.id = sel11_id
+                        select11.setAttribute("onchange", 'on_sub(home_id="'+repl_a.id+'", td_sel_id="'+td_sel.id+'", sub_id="'+select11.id+'")');
+                        //foreach key create option element and append to select element
+                        var x = 0
+                        for(key in response){
+                            var opt = document.createElement('option');
+                            opt.value = response[key];
+                            opt.innerText = response[key].split('/').slice(-1).pop();
+                            if(x==0){
+                                opt.selected = true
+                            }
+                            select11.appendChild(opt);
+                            x = x + 1
+                        }
+                        td_sel.appendChild(select11);
+
+                   },
+                    error:  function(xhr) {
+                        //Do Something to handle error
+                        }
+                });
             }
         }
     </script>

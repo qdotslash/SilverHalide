@@ -1,7 +1,7 @@
 py={}
 
 py['sitename'] = "Xenon"
-py['mediadir'] = 'static/media/'
+py['mediadir'] = 'static/media/xenon/'
 py['webres'] =  800
 py['thumbres'] = 300
 py['supported_images'] = ['jpg', 'jpeg', 'png', 'bmp']
