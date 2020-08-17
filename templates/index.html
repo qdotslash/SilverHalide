@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xenon</title>
+    <script src="{{ url_for('static', filename='js/jquery-3.5.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap-lightbox.min.js') }}"></script>
+    <script src="{{ url_for( 'static' , filename='js/flowplayer.min.js' ) }}"></script>
+    <link href="{{url_for('static', filename='css/bootstrap-lightbox.min.css')}}" rel="stylesheet" type="stylesheet"/>    
+    <link href="{{ url_for('static', filename='css/minimalist.css') }}" rel="stylesheet" type="text/css" /> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script type="text/javascript">
+        function on_sel_id(home_id, td_sel_id, sel_id) {
+            var sel_el = document.getElementById(sel_id)
+            var sel_value = sel_el.options[sel_el.selectedIndex].value;
+            var sel_text = sel_el.options[sel_el.selectedIndex].text;
+            if(sel_value!=0){
+                var repl_div = document.createElement('div');
+                repl_div.innerText = sel_text;
+                repl_div.id = sel_id;
+                document.getElementById( td_sel_id ).replaceChild(repl_div, document.getElementById ( sel_id ))
+                var home = document.getElementById(home_id);
+                home.innerText = "+";
+            }
+        }
+    </script>
+
+    <script type="text/javascript">
+        function init() {
+            $.ajax({
+                url: "/init",
+                type: "get",
+                success: function(response) {
+
+                    const td_sel1 = document.getElementById("td_sel1")
+                    while (td_sel1.firstChild) {
+                        td_sel1.firstChild.remove();
+                        }
+                    const td_sel2 = document.getElementById("td_sel2")
+                    while (td_sel2.firstChild) {
+                        td_sel2.firstChild.remove();
+                        }
+                    var select1 = document.createElement('select');
+                    select1.id = "sel_1"
+                    select1.setAttribute("onchange", 'on_sel_id(home_id="home_1", td_sel_id="td_sel1", sel_id="sel_1")');
+                    var select2 = document.createElement('select');
+                    select2.id = "sel_2"
+                    select2.setAttribute("onchange", 'on_sel_id(home_id="home_2", td_sel_id="td_sel2", sel_id="sel_2")');
+                    
+
+                    //foreach key create option element and append to select element
+                    var x = 0
+                    for(key in response){
+                        var opt = document.createElement('option');
+                        opt.value = x;
+                        opt.innerText = response[key];
+                        if(x==0){
+                            opt.selected = true
+                        }
+                        select1.appendChild(opt);
+                        var opt = document.createElement('option');
+                        opt.value = x;
+                        opt.innerText = response[key];
+                        if(x==0){
+                            opt.selected = true
+                        }
+                        select2.appendChild(opt);
+                        x = x + 1
+                    }
+                    var home_1 = document.createElement('div')
+                    home_1.id = 'home_1'
+                    td_sel1.appendChild(home_1)
+                    td_sel1.appendChild(select1);
+                    var home_2 = document.createElement('div')
+                    home_2.id = 'home_2'
+                    td_sel2.appendChild(home_2)
+                    td_sel2.appendChild(select2);
+                    // document.getElementById ( "td_sel2" ).appendChild(select2);
+
+                },
+                error: function(xhr) {
+                    //Do Something to handle error
+                }
+            });
+        }
+      </script>
+
+</head>
+<body onload=init()>
+    <div id="head">
+        <div class="title">
+            <a href="/" style="color:#0088cc;">{{sitename[:-1]}}</a><a href="/" style="color:#FF0080;" >{{sitename[-1:]}}</a>
+        </div>
+    </div>
+    <table>
+        <tr>
+            <td id="td_sel1"></td>
+            <td>blank</td>
+        </tr>
+        <tr>
+            <td id="td_sel2"></td>
+            <td>blank</td>
+        </tr>
+
+    </table>
+    <div id="results"></div>
+    <div id="results"></div>
+
+</body>
+</html>

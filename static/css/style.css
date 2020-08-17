@@ -1,0 +1,227 @@
+body{
+  padding : 0 100px 0 20px;
+  font-size: 14px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#head {
+  padding : 0 0 20px 0;
+  height : 40px;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 55px;
+}
+
+.login {
+  float: right;
+  font-weight: bold;
+}
+
+.login input {
+  margin:1px;
+  padding: 2px;
+  width: 140px;
+  height: 14px;
+}
+
+.login .checkbox {
+  float: right;
+  width: 20px;
+}
+
+.hidden_button{
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+}
+
+#nav { 
+  display: block; 
+  clear: left; 
+  padding: 15px 20px 10px 20px ; 
+} 
+  
+#nav a{                                                                                                  
+  font-weight: bold ;
+  font-size: 30px ;
+}
+
+#back a{                                                                                                  
+  font-weight: bold ;
+  font-size: 15px ;
+}
+
+#main {
+  padding: 15px 20px 10px 20px ;
+}
+
+.dir a{
+  display: block;
+  float: left;
+  overflow: hidden;
+  margin: 0 4px 4px 0;
+  padding: 0px;
+  padding-top: 30px;
+  width:130px;
+  height:60px;
+  background-size: 100%;
+  text-align: center;
+  text-decoration: none;
+}
+
+.dir span {
+  padding: 2px 4px ;
+  background-color : white ; 
+  font-weight: bold ;
+  font-size: 14px;                                                                                       
+}
+
+#pics {
+  clear: both;
+  height: 40px ;
+}
+
+#pics ul {
+  margin: 0px;
+  padding: 0px;
+
+}
+
+#items {
+  clear:both ;
+  list-style: none ;
+}
+
+.item {
+  float:left;
+  overflow:hidden;
+  margin: 0px 6px  6px 0px;
+  padding-bottom: 12px;
+  width: 260px;
+  height: 260px;
+  text-align: left;
+}
+
+.item h4 {
+  margin: 3px;
+}
+
+.thumb{
+  background: #E1EDF2 ;
+  text-align:center;
+}
+
+.thumb:hover,
+.thumb:focus {
+  background-color:  #A8B1B5 ;
+}
+
+.thumb img{
+  overflow: hidden;
+  margin: 0 0 -3px 0;
+  height: 210px;
+}
+
+.flowplayer {
+  height: 210px;
+  background-color: #E1EdF2;
+}
+
+.flowplayer:hover,
+.flowplayer:focus {
+  background-color: #A8B1B5 ;
+}
+
+.info {
+  margin: 2px ;
+}
+
+.embed {
+  float: right;
+}
+
+.embed-code {
+  padding: 2px;
+  width: 140px;
+  height: 14px;
+}
+
+#error {
+  padding: 15px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#upload {
+  padding: 0 15px;
+
+}
+
+#upload dd {
+  margin: 0;
+}
+
+#subsubmit {
+  margin: 0 200px;
+  width:100px;
+}
+
+#upload select,
+#upload #custom_folder,
+#upload #file {
+  width: 300px;
+}
+
+#back {
+  margin: 0 280px;
+}
+
+#license {
+  float:left;
+  padding: 3px 20px 3px 20px ; 
+  color: #A8B1B5 ;
+}
+
+#about  {
+  float:right;
+  padding: 3px 20px 3px 20px ; 
+  color: #A8B1B5 ;
+}
+
+a {
+  color: #0088cc;
+  text-decoration: none;
+  }
+
+a:hover,
+a:focus {
+  color: #002233 ;
+}
+
+input {
+  border: 1px solid #999;
+  background-color: #eee ;
+  color: #777;
+}
+
+ul {
+  line-height:105%;
+  margin: 0px;
+  padding: 0px;
+}
+ul li {
+  line-height:105%;
+  margin: 0px;
+  padding: 0px;
+}
+
+#sel_wrapper{
+  border: 1px dashed red;
+  height: 150px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  width: 150px;
+}

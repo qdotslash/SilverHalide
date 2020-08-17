@@ -1,0 +1,10 @@
+Flask
+Flask-Reuploaded
+Flask-Login
+Flask-JSON
+werkzeug
+Pillow
+requests
+bs4
+lxml
+html5lib
