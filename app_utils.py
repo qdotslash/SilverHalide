@@ -69,6 +69,24 @@ def sub_dirs(root_dir):
     return sub_dirs
 
 
+def get_file_list(get_path):
+    if not get_path.startswith(config.py['mediadir']):
+        get_path = config.py['mediadir'] + get_path 
+    if not get_path.endswith('/'):
+        get_path = get_path + '/'
+    get_dir = get_path.replace(config.py['mediadir'], '')  # used for path_file_list not scandir
+    file_list = [f.name for f in os.scandir(get_path) if f.is_file()]
+    path_file_list = []
+    for f in file_list:
+        suffix = f.lower().split('.')[1]
+        if suffix not in config.py['supported_files']:
+            continue
+        
+        path_file_list.append(get_path + f)
+
+    return path_file_list
+
+
 ##### directory scanner ######
 def scanDir(get_path):
     """

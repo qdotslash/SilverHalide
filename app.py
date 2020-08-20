@@ -36,6 +36,14 @@ def increment_value():
 def init():
     return render_template('index.html', sitename=sitename)
 
+
+@app.route('/fileList/<path:get_path>', methods=['GET'])
+@as_json
+def get_file_list(get_path):
+    file_list = app_utils.get_file_list(get_path)
+    return(file_list)
+    
+
 @app.route('/init', methods=['GET'])
 @app.route('/<path:scan_dir>', methods=['GET'])
 @as_json
