@@ -1,0 +1,12 @@
+py={}
+
+py['sitename'] = "Xenon"
+py['mediadir'] = 'xenon/cameras/'
+py['assume_role'] = 'arn:aws:iam::648820547446:role/mendeleev-xenon-s3-prod'
+py['webres'] =  800
+py['thumbres'] = 300
+py['supported_images'] = ['jpg', 'jpeg', 'png', 'bmp']
+py['supported_videos'] = ['mp4']
+py['supported_files'] = py['supported_images'] + py['supported_videos']
+py['secret'] = '\x18\xcax\xcb\x0c\xeb\x91|\xd8d\xba\x0f\x0f\x14\xf2C}SC\x97\xc7|U\x16'
+
