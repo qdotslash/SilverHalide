@@ -1,0 +1,1 @@
+This is from vs Code in remote docker container
